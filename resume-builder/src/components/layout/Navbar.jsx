@@ -1,11 +1,15 @@
-// src/layout/Navbar.jsx
+
 
 import { useState } from "react";
 import MobileMenu from "./MobileMenu";
+// import ThemeToggle from "../ThemeToggle";
+// import useTheme from "../hooks/useTheme";
 
 const Navbar = () => {
-  const [active, setActive] = useState("Home");
+  const [active, setActive] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // const { theme, toggleTheme } = useTheme();
 
   const navLinks = [
     "Home",
@@ -57,15 +61,24 @@ const Navbar = () => {
         ))}
       </ul>
 
-      {/* CTA */}
-      <button
-        className="create-btn"
-        onClick={() => scrollToSection("builder")}
-      >
-        Create Resume
-      </button>
+      {/* Right Side Actions */}
+      <div className="navbar-actions">
+        {/* <ThemeToggle
+          theme={theme}
+          toggleTheme={toggleTheme}
+        /> */}
 
-      {/* Mobile Hamburger */}
+        <button
+          className="create-btn"
+          onClick={() =>
+            scrollToSection("builder")
+          }
+        >
+          Create Resume
+        </button>
+      </div>
+
+      {/* Mobile Menu Button */}
       <div
         className="hamburger"
         onClick={() =>
@@ -75,6 +88,7 @@ const Navbar = () => {
         ☰
       </div>
 
+      {/* Mobile Menu */}
       {menuOpen && (
         <MobileMenu
           navLinks={navLinks}

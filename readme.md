@@ -68,7 +68,7 @@ resume-builder/
 └── README.md
 ⚙️ Installation & Setup
 1️⃣ Clone the repository
-git clone https://github.com/your-username/resume-builder.git
+git clone https://github.com/Sheikh-ASif/resume-builder.git
 2️⃣ Move into project directory
 cd resume-builder
 3️⃣ Install dependencies
@@ -110,7 +110,7 @@ Provides navigation and structure to the app.
 Sheikh Asif
 
 GitHub: github.com/Sheikh-ASif
-LinkedIn: (add your profile link)
+
 📜 License
 
 This project is for educational purposes and personal portfolio use.

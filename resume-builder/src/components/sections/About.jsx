@@ -1,4 +1,4 @@
-// src/sections/About.jsx
+
 
 const About = () => {
   return (

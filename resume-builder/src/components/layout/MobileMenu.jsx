@@ -1,4 +1,3 @@
-// src/layout/MobileMenu.jsx
 
 const MobileMenu = ({
   navLinks,

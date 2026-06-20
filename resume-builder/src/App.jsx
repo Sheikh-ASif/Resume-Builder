@@ -1,0 +1,78 @@
+
+
+import { useState } from "react";
+
+import Header from "./components/layout/Header.jsx";
+import Footer from "./components/layout/Footer.jsx";
+
+import Hero from "./components/sections/Hero.jsx";
+import Templates from "./components/sections/Templates.jsx";
+import Features from "./components/sections/Features.jsx";
+import About from "./components/sections/About.jsx";
+import Contact from "./components/sections/Contact.jsx";
+import ResumeBuilder from "./components/sections/ResumeBuilder.jsx";
+import ResumePreview from "./components/sections/ResumePreview.jsx";
+
+import { INITIAL_RESUME_DATA } from "./components/utils/constants";
+import { downloadResumePDF } from "./components/utils/pdfGenerator";
+
+function App() {
+  const [resumeData, setResumeData] = useState(
+    INITIAL_RESUME_DATA
+  );
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setResumeData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleReset = () => {
+    setResumeData(INITIAL_RESUME_DATA);
+  };
+
+  const handleDownload = () => {
+    downloadResumePDF();
+  };
+
+  return (
+    <>
+      <Header />
+
+      <main>
+        <Hero />
+
+        <Templates />
+
+        <Features />
+
+        <About />
+
+        <section
+          id="builder"
+          className="resume-builder-wrapper"
+        >
+          <ResumeBuilder
+            resumeData={resumeData}
+            handleChange={handleChange}
+            handleReset={handleReset}
+            handleDownload={handleDownload}
+          />
+
+          <ResumePreview
+            resumeData={resumeData}
+          />
+        </section>
+
+        <Contact />
+      </main>
+
+      <Footer />
+    </>
+  );
+}
+
+export default App;

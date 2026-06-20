@@ -1,4 +1,4 @@
-// src/sections/Contact.jsx
+
 
 const Contact = () => {
   return (
@@ -11,7 +11,7 @@ const Contact = () => {
           </span>
 
           <h2>
-            Have Questions?
+            Have Questions? <br />
             We'd Love To Hear From You
           </h2>
 
@@ -21,38 +21,54 @@ const Contact = () => {
           </p>
 
           <div className="contact-details">
+
+            {/* Email */}
             <div className="contact-item">
               <h4>Email</h4>
-              <p>your-email@gmail.com</p>
+              <a
+                href="mdasif74083@gmail.com"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "#6ea47f", textDecoration: "none", fontWeight: "500" }}
+              >
+                mdasif74083@gmail.com
+              </a>
             </div>
 
+            {/* GitHub */}
             <div className="contact-item">
               <h4>GitHub</h4>
-              <p>github.com/yourusername</p>
+              <a
+                href="https://github.com/Sheikh-ASif"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "#6ea47f", textDecoration: "none", fontWeight: "500" }}
+              >
+                github.com/Sheikh-ASif
+              </a>
             </div>
 
+            {/* LinkedIn */}
             <div className="contact-item">
               <h4>LinkedIn</h4>
-              <p>linkedin.com/in/yourprofile</p>
+              <a
+                href="https://www.linkedin.com/in/md-asif-sheikh-74b3b52b8"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "#6ea47f", textDecoration: "none", fontWeight: "500" }}
+              >
+                linkedin.com/in/md-asif-sheikh-74b3b52b8
+              </a>
             </div>
+
           </div>
         </div>
 
+        {/* Form */}
         <form className="contact-form">
-          <input
-            type="text"
-            placeholder="Your Name"
-          />
-
-          <input
-            type="email"
-            placeholder="Your Email"
-          />
-
-          <textarea
-            rows="5"
-            placeholder="Your Message"
-          ></textarea>
+          <input type="text" placeholder="Your Name" />
+          <input type="email" placeholder="Your Email" />
+          <textarea rows="5" placeholder="Your Message"></textarea>
 
           <button type="submit">
             Send Message

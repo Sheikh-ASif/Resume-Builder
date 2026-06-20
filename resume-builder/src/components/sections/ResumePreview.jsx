@@ -1,4 +1,4 @@
-// src/sections/ResumePreview.jsx
+
 
 const ResumePreview = ({ resumeData }) => {
   return (

@@ -1,4 +1,3 @@
-// src/sections/ResumeBuilder.jsx
 
 import ResumeForm from "../forms/ResumeForm";
 import ActionButtons from "../buttons/ActionButtons";

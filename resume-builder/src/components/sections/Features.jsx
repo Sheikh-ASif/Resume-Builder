@@ -1,4 +1,4 @@
-// src/sections/Features.jsx
+
 
 const Features = () => {
   const features = [

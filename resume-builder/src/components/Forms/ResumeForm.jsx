@@ -1,4 +1,3 @@
-// src/forms/ResumeForm.jsx
 
 const ResumeForm = ({
   resumeData,

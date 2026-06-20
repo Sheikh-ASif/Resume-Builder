@@ -1,4 +1,4 @@
-// src/sections/Hero.jsx
+
 
 const Hero = () => {
   return (

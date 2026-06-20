@@ -1,4 +1,4 @@
-// src/sections/Templates.jsx
+
 
 const Templates = () => {
   const templates = [

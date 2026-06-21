@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 
 import Header from "./components/layout/Header.jsx";
@@ -17,9 +15,10 @@ import { INITIAL_RESUME_DATA } from "./components/utils/constants";
 import { downloadResumePDF } from "./components/utils/pdfGenerator";
 
 function App() {
-  const [resumeData, setResumeData] = useState(
-    INITIAL_RESUME_DATA
-  );
+  const [resumeData, setResumeData] = useState({
+    ...INITIAL_RESUME_DATA,
+    customSections: [],
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,11 +30,54 @@ function App() {
   };
 
   const handleReset = () => {
-    setResumeData(INITIAL_RESUME_DATA);
+    setResumeData({
+      ...INITIAL_RESUME_DATA,
+      customSections: [],
+    });
   };
 
   const handleDownload = () => {
     downloadResumePDF();
+  };
+
+  // Add custom section
+  const handleAddSection = () => {
+    const title = prompt(
+      "Enter section name (Example: Achievements, Languages, Extracurricular Activities)"
+    );
+
+    if (!title?.trim()) return;
+
+    setResumeData((prev) => ({
+      ...prev,
+      customSections: [
+        ...prev.customSections,
+        {
+          id: Date.now(),
+          title,
+          content: "",
+        },
+      ],
+    }));
+  };
+
+  // Update custom section content
+  const handleCustomSectionChange = (
+    id,
+    value
+  ) => {
+    setResumeData((prev) => ({
+      ...prev,
+      customSections:
+        prev.customSections.map((section) =>
+          section.id === id
+            ? {
+                ...section,
+                content: value,
+              }
+            : section
+        ),
+    }));
   };
 
   return (
@@ -60,6 +102,10 @@ function App() {
             handleChange={handleChange}
             handleReset={handleReset}
             handleDownload={handleDownload}
+            handleAddSection={handleAddSection}
+            handleCustomSectionChange={
+              handleCustomSectionChange
+            }
           />
 
           <ResumePreview
@@ -76,3 +122,4 @@ function App() {
 }
 
 export default App;
+

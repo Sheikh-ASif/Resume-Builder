@@ -1,110 +1,165 @@
-
-
 const ResumePreview = ({ resumeData }) => {
+  const skills = resumeData.skills
+    ? resumeData.skills
+        .split(",")
+        .map((skill) => skill.trim())
+        .filter(Boolean)
+    : [];
+
   return (
     <section className="resume-preview-section">
       <div
         className="resume-preview"
         id="resume-preview"
       >
-        {/* Resume Header */}
-        <div className="resume-header">
-          <h1>
+        {/* Header */}
+        <header className="resume-header">
+          <h1 className="resume-name">
             {resumeData.name || "Your Name"}
           </h1>
 
           <div className="resume-contact">
             <span>
-              {resumeData.email || "your@email.com"}
+              📧 {resumeData.email || "your@email.com"}
             </span>
 
             <span>
-              {resumeData.phone || "+91 9876543210"}
+              📱 {resumeData.phone || "+91 98765 XXXXX"}
             </span>
 
             <span>
-              {resumeData.address || "Your Address"}
+              📍 {resumeData.address || "Your Address"}
             </span>
           </div>
 
-          {(resumeData.linkedin || resumeData.github) && (
+          {(resumeData.linkedin ||
+            resumeData.github) && (
             <div className="resume-links">
               {resumeData.linkedin && (
-                <p>
-                  <strong>LinkedIn:</strong>{" "}
-                  {resumeData.linkedin}
-                </p>
+                <a
+                  href={resumeData.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
               )}
 
               {resumeData.github && (
-                <p>
-                  <strong>GitHub:</strong>{" "}
-                  {resumeData.github}
-                </p>
+                <a
+                  href={resumeData.github}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
               )}
             </div>
           )}
-        </div>
+        </header>
 
         {/* Summary */}
-        <div className="resume-section">
+        <section className="resume-section">
           <h2>Professional Summary</h2>
 
-          <p>
+          <div className="resume-content">
             {resumeData.summary ||
-              "Your professional summary will appear here."}
-          </p>
-        </div>
-
-        {/* Education */}
-        <div className="resume-section">
-          <h2>Education</h2>
-
-          <p>
-            {resumeData.education ||
-              "Your education details will appear here."}
-          </p>
-        </div>
+              "Write a short summary about yourself, your skills, achievements and career goals."}
+          </div>
+        </section>
 
         {/* Skills */}
-        <div className="resume-section">
+        <section className="resume-section">
           <h2>Skills</h2>
 
-          <p>
-            {resumeData.skills ||
-              "Your skills will appear here."}
-          </p>
-        </div>
+          {skills.length > 0 ? (
+            <div className="skills-container">
+              {skills.map((skill, index) => (
+                <span
+                  key={index}
+                  className="skill-tag"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <div className="skills-container">
+              {[
+                "JavaScript",
+                "React",
+                "Node.js",
+                "MongoDB",
+                "HTML",
+                "CSS",
+              ].map((skill) => (
+                <span
+                  key={skill}
+                  className="skill-tag"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {/* Education */}
+        <section className="resume-section">
+          <h2>Education</h2>
+
+          <div className="resume-content">
+            {resumeData.education ||
+              "Bachelor of Technology in Computer Science"}
+          </div>
+        </section>
 
         {/* Experience */}
-        <div className="resume-section">
+        <section className="resume-section">
           <h2>Experience</h2>
 
-          <p>
+          <div className="resume-content">
             {resumeData.experience ||
-              "Your work experience will appear here."}
-          </p>
-        </div>
+              "Describe your internships, jobs, responsibilities, and achievements here."}
+          </div>
+        </section>
 
         {/* Projects */}
-        <div className="resume-section">
+        <section className="resume-section">
           <h2>Projects</h2>
 
-          <p>
+          <div className="resume-content">
             {resumeData.projects ||
-              "Your projects will appear here."}
-          </p>
-        </div>
+              "Mention your key projects, technologies used, and outcomes."}
+          </div>
+        </section>
 
         {/* Certifications */}
-        <div className="resume-section">
+        <section className="resume-section">
           <h2>Certifications</h2>
 
-          <p>
+          <div className="resume-content">
             {resumeData.certifications ||
-              "Your certifications will appear here."}
-          </p>
-        </div>
+              "List your certifications and completed courses here."}
+          </div>
+        </section>
+
+        {/* Custom Sections */}
+        {resumeData.customSections?.map(
+          (section) => (
+            <section
+              key={section.id}
+              className="resume-section custom-preview-section"
+            >
+              <h2>{section.title}</h2>
+
+              <div className="resume-content">
+                {section.content ||
+                  `Add details for ${section.title}`}
+              </div>
+            </section>
+          )
+        )}
       </div>
     </section>
   );

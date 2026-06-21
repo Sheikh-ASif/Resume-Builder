@@ -1,5 +1,5 @@
 
-import ResumeForm from "../forms/ResumeForm";
+import ResumeForm from "../Forms/ResumeForm";
 import ActionButtons from "../buttons/ActionButtons";
 
 const ResumeBuilder = ({
